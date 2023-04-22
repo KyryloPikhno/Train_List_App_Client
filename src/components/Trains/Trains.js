@@ -9,30 +9,40 @@ import {Train} from "../Train/Train";
 
 
 const Trains = () => {
-    const {trains} = useSelector(state => state.trainReducer);
+    const {trains, loading} = useSelector(state => state.trainReducer);
 
     const [query] = useSearchParams();
 
     const dispatch = useDispatch();
 
+    const from_city = query.get('from_city');
+    const to_city = query.get('to_city');
+    const date = query.get('formattedDate');
+
     useEffect(() => {
         dispatch(trainActions.getAll({
-            from_city: query.get('from_city') || null,
-            to_city: query.get('to_city') || null,
-            date: query.get('formattedDate') || null
+            from_city,
+            to_city,
+            date
         }))
     }, [query]);
 
     return (
         <div className={css.container}>
             <FromAndToForms/>
-            <div className={css.trains}>
-                {
-                    trains.length !== 0 ? trains.map(train => <Train key={train.id} train={train}/>)
-                    :
-                    <h1>{query.get('from_city') || query.get('to_city') || query.get('formattedDate') ? 'Trains not found' : []}</h1>
-                }
-            </div>
+            {(loading && (from_city || to_city || date)) ?
+                <div>
+                    loadinggg
+                </div>
+                :
+                <div className={css.trains}>
+                    {
+                        trains.length !== 0 ? trains.map(train => <Train key={train.id} train={train}/>)
+                            :
+                            <h1>{from_city || to_city || date ? 'Trains not found' : []}</h1>
+                    }
+                </div>
+            }
         </div>
     );
 };
