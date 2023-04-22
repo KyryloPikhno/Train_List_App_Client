@@ -89,7 +89,7 @@ const FromAndToForms = () => {
             <input type='text' placeholder={'to city...'} {...register('to_city')}/>
 
             <div className={css.setCity}>
-                <p onClick={()=>valueSetter('from_city', 'kyiv')}>Kyiv</p>
+                <p onClick={()=>valueSetter('from_city', 'Kyiv')}>Kyiv</p>
                 <p onClick={()=>valueSetter('from_city','Lviv')}>Lviv</p>
                 <p onClick={()=>valueSetter('from_city','Mariupol')}>Mariupol</p>
             </div>
