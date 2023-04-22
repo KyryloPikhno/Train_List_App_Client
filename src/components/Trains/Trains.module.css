@@ -1,3 +1,11 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    background: linear-gradient(to bottom, #0275d8 0%,  snow 50%, white 100%);
+}
+
 .container {
     display: flex;
     align-items: center;
@@ -5,46 +13,58 @@
     flex-direction: column;
 }
 
+.container h1 {
+    text-align: center;
+    color:#0275d8;
+}
+
+.button {
+    background-color: #ffffff;
+    color: #333333;
+    font-size: 16px;
+    padding: 8px;
+    width: 5vw;
+    min-width: 100px;
+    border: 1px solid #0275d8;
+    border-radius: 0.25rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    text-align: center;
+}
+
 .trains {
     margin-top: 50px;
     width: 40vw;
 }
 
-.trainLoader {
-    position: relative;
-    width: 200px;
-    height: 50px;
+.loaderBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:150px ;
+    width: 100%;
 }
 
-.trainLoader__carriage {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50px;
-    height: 50px;
-    background-color: #333;
+.buttonBox {
+    display: flex;
+    justify-content: center;
+}
+
+.loader{
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    animation: train-move 1s linear infinite;
+    border:5px dashed #0275d8;
+    animation: rotate 1s infinite linear;
 }
 
-.trainLoader__carriage:nth-child(2) {
-    left: 75px;
-    animation-delay: 0.2s;
-}
-
-.trainLoader__carriage:last-child {
-    left: 150px;
-    animation-delay: 0.4s;
-}
-
-@keyframes train-move {
-    0% {
-        transform: translateX(0);
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
     }
-    50% {
-        transform: translateX(100px);
-    }
-    100% {
-        transform: translateX(200px);
+    to {
+        transform: rotate(360deg);
     }
 }

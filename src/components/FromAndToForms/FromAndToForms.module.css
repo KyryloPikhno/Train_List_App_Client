@@ -11,8 +11,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 40vw;
-    gap: 20px;
+    /*max-width:400px;*/
+    width: 500px;
+    gap: 5px;
     position: relative;
 }
 
@@ -20,8 +21,8 @@
     background-color: #ffffff;
     color: #333333;
     font-size: 16px;
-    width: 15vw;
-    min-width: 100px;
+    /*width: 15vw;*/
+    width: 210px;
     padding: 8px;
     border: 1px solid #0275d8;
     border-radius: 0.25rem;
@@ -32,46 +33,54 @@
     text-align: center;
 }
 
-.inputBox {
-
-}
-
 .validButton,.noValidButton{
-    background-color: #ffffff;
-    color: #333333;
     font-size: 16px;
     padding: 8px;
-    width: 15vw;
-    min-width: 100px;
+    width: 210px;
+    background: #0275d8;
     border: 1px solid #0275d8;
     border-radius: 0.25rem;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     cursor: pointer;
+    color: white;
     text-align: center;
 }
 
 .noValidButton {
+    background: lightgrey;
     border: 1px solid grey;
     color: grey;
     cursor: auto;
+}
+
+.setCity {
+    font-size: 11px;
+    width: 210px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.setCity p {
+    cursor: pointer;
+    color: #0275d8;
 }
 
 .from_cityErr,.to_cityErr,.dateErr {
     font-size: 10px;
     color: red;
     position: absolute;
-    left: 5vw;
-    top: -2vh;
+    left: 40px;
+    top: -15px;
 }
 
 .to_cityErr {
-    left: 21.5vw;
-    top: -2vh;
+    left: 255px;
+    top: -15px;
 }
 
 .dateErr{
-    left: 5vw;
-    top: 10vh;
+    left:  40px;
+    top: 105px;
 }

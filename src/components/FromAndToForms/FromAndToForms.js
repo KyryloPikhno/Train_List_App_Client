@@ -12,8 +12,8 @@ import moment from "moment";
 
 
 const FromAndToForms = () => {
-    const {register, handleSubmit, setValue, formState: {errors, isValid}} = useForm({
-        defaultValues: {"from_city": null, "to_city": null},
+    const {register, handleSubmit, trigger, setValue, formState: {errors, isValid}} = useForm({
+        defaultValues: {"from_city": '', "to_city": ''},
         resolver: joiResolver(FromAndToFormsValidator),
         mode: 'onChange'
     });
@@ -73,14 +73,32 @@ const FromAndToForms = () => {
         }
     };
 
+    const valueSetter = (field , value) => {
+        setValue(field , value)
+
+        trigger();
+    };
+
     return (
         <form className={css.form} onSubmit={handleSubmit(submit)}>
 
             {errors.from_city && <span className={css.from_cityErr}>{errors.from_city.message}</span>}
-            <input type='text' placeholder={'from city'} {...register('from_city')}/>
+            <input type='text' placeholder={'from city...'} {...register('from_city')}/>
 
             {errors.to_city && <span className={css.to_cityErr}>{errors.to_city.message}</span>}
-            <input type='text' placeholder={'to city'} {...register('to_city')}/>
+            <input type='text' placeholder={'to city...'} {...register('to_city')}/>
+
+            <div className={css.setCity}>
+                <p onClick={()=>valueSetter('from_city', 'kyiv')}>Kyiv</p>
+                <p onClick={()=>valueSetter('from_city','Lviv')}>Lviv</p>
+                <p onClick={()=>valueSetter('from_city','Mariupol')}>Mariupol</p>
+            </div>
+
+            <div className={css.setCity}>
+                <p onClick={()=>valueSetter('to_city','Kyiv')}>Kyiv</p>
+                <p onClick={()=>valueSetter('to_city','Lviv')}>Lviv</p>
+                <p onClick={()=>valueSetter('to_city','Mariupol')}>Mariupol</p>
+            </div>
 
             <div>
                 <DatePicker
@@ -90,11 +108,11 @@ const FromAndToForms = () => {
                     minDate={new Date()}
                     maxDate={new Date(new Date().setMonth(new Date().getMonth() + 1))}
                     dateFormat="yyyy-MM-dd"
-                    placeholderText={query.get('formattedDate') || "select a date"}
+                    placeholderText={query.get('formattedDate') || "select a date..."}
                 />
             {errors.date && <span className={css.dateErr}>{errors.date.message}</span>}
-
             </div>
+
             <button className={!isValid ? css.noValidButton : css.validButton} disabled={!isValid}>
                 Submit
             </button>
