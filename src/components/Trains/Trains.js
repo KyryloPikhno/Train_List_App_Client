@@ -5,12 +5,11 @@ import {useEffect} from "react";
 
 import {trainActions} from "../../redux/slices/train.slice";
 import css from './Trains.module.css';
+import {Train} from "../Train/Train";
 
 
 const Trains = () => {
     const {trains} = useSelector(state => state.trainReducer);
-
-    console.log(trains);
 
     const [query] = useSearchParams();
 
@@ -26,9 +25,13 @@ const Trains = () => {
 
     return (
         <div className={css.container}>
-           <FromAndToForms/>
-            <div>
-
+            <FromAndToForms/>
+            <div className={css.trains}>
+                {
+                    trains.length !== 0 ? trains.map(train => <Train key={train.id} train={train}/>)
+                    :
+                    <h1>{query.get('from_city') || query.get('to_city') || query.get('formattedDate') ? 'Trains not found' : []}</h1>
+                }
             </div>
         </div>
     );
