@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:8000';
+const baseURL = 'https://train-server.herokuapp.com';
 
 const urls = {
     train: '/train'
