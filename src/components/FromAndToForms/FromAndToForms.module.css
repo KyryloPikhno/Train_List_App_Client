@@ -1,0 +1,77 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+.form {
+    margin-top: 250px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 40vw;
+    gap: 20px;
+    position: relative;
+}
+
+.form input {
+    background-color: #ffffff;
+    color: #333333;
+    font-size: 16px;
+    width: 15vw;
+    min-width: 100px;
+    padding: 8px;
+    border: 1px solid #0275d8;
+    border-radius: 0.25rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.inputBox {
+
+}
+
+.validButton,.noValidButton{
+    background-color: #ffffff;
+    color: #333333;
+    font-size: 16px;
+    padding: 8px;
+    width: 15vw;
+    min-width: 100px;
+    border: 1px solid #0275d8;
+    border-radius: 0.25rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.noValidButton {
+    border: 1px solid grey;
+    color: grey;
+    cursor: auto;
+}
+
+.from_cityErr,.to_cityErr,.dateErr {
+    font-size: 10px;
+    color: red;
+    position: absolute;
+    left: 5vw;
+    top: -2vh;
+}
+
+.to_cityErr {
+    left: 21.5vw;
+    top: -2vh;
+}
+
+.dateErr{
+    left: 5vw;
+    top: 10vh;
+}
