@@ -45,9 +45,8 @@ const FromAndToForms = () => {
             let formattedDate = null;
 
             if (date) {
-                formattedDate = moment(obj.date).format('YYYY-MM-DD');
+             formattedDate = moment(date).add(1, "day").format('YYYY-MM-DD');
             }
-            console.log(from_city, to_city, formattedDate);
 
             let findObj = {};
 
